@@ -1,9 +1,3 @@
-/**
-  * Name    : GameManager.java
-  * Project : GameX
-  * Author  : Robert M Hubinsky <r.hubinsky@hotmail.com>
-  * Created : 28.11.2012
-  */
 package gamex.core;
 
 import gamex.helpers.DrawingThread;
