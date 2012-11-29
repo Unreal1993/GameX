@@ -1,28 +1,32 @@
 package gamex.core;
 
 import gamex.helpers.DrawingThread;
-import gamex.primitives.DrawingObject;
+import gamex.primitives.Map;
+
+import java.awt.*;
 
 public class GameManager {
 	private int fps = 80;
-	private DrawingObject drawingObject;
+	private Graphics graphics;
 	private DrawingThread drawingThread;
+	private Map map;
 
-	public GameManager(DrawingObject drawingObject, int fps) {
+	public GameManager(Graphics graphics, int fps) {
 		this.fps = fps;
-		this.drawingObject = drawingObject;
+		this.graphics = graphics;
 		initialize();
 	}
 
+	public Map getMap() {
+		return map;
+	}
+
+	public void setMap(Map map) {
+		this.map = map;
+	}
+
 	public void initialize() {
-		try {
-			drawingThread = new DrawingThread();
-			drawingThread.setDrawingObject(drawingObject);
-			drawingThread.setFps(fps);
-			drawingThread.start();
-		} catch (Exception e) {
-			System.out.println("Failed to initialize the game manager");
-		}
+		drawingThread = new DrawingThread(this, new MapDrawingManager(graphics)).setFps(fps).start();
 	}
 
 	public void stop() {

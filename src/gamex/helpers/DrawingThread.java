@@ -6,29 +6,31 @@
  */
 package gamex.helpers;
 
-import gamex.primitives.DrawingObject;
+import gamex.core.GameManager;
+import gamex.core.MapDrawingManager;
 
 public class DrawingThread implements Runnable {
 
 	private boolean shouldRun = false;
 	private int fps = 80;
-	private DrawingObject drawingObject;
+	private GameManager gameManager;
+	private MapDrawingManager mapDrawingManager;
 
 	private Thread thread;
 
-	public DrawingThread() {
+	public DrawingThread(GameManager gameManager, MapDrawingManager drawingManager) {
 		thread = new Thread(this);
+		this.gameManager = gameManager;
+		this.mapDrawingManager = drawingManager;
 	}
 
 	public void run() {
 		while (shouldRun) {
-			if (drawingObject != null) {
-				drawingObject.paint();
-				try {
-					sleep();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			mapDrawingManager.draw(gameManager.getMap());
+			try {
+				sleep();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 	}
@@ -37,25 +39,23 @@ public class DrawingThread implements Runnable {
 		Thread.sleep(1000 / getFps());
 	}
 
-	public void start() {
+	public DrawingThread start() {
 		shouldRun = true;
 		thread.start();
+		return this;
 	}
 
 	public void stop() {
 		shouldRun = false;
-		thread.stop();
 	}
 
 	public int getFps() {
 		return fps;
 	}
 
-	public void setFps(int fps) {
+	public DrawingThread setFps(int fps) {
 		this.fps = fps;
+		return this;
 	}
 
-	public void setDrawingObject(DrawingObject drawingObject) {
-		this.drawingObject = drawingObject;
-	}
 }
