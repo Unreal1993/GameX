@@ -1,31 +1,31 @@
 /**
-  * Name    : DrawingThread.java
-  * Project : GameX
-  * Author  : Robert M Hubinsky <r.hubinsky@hotmail.com>
-  * Created : 28.11.2012
-  */
+ * Name    : DrawingThread.java
+ * Project : GameX
+ * Author  : Robert M Hubinsky <r.hubinsky@hotmail.com>
+ * Created : 28.11.2012
+ */
 package gamex.helpers;
 
 import gamex.primitives.DrawingObject;
 
-public class DrawingThread implements Runnable{
+public class DrawingThread implements Runnable {
 
 	private boolean shouldRun = false;
 	private int fps = 80;
 	private DrawingObject drawingObject;
 
-    private Thread thread;
+	private Thread thread;
 
-    public DrawingThread() {
-        thread = new Thread(this);
-    }
+	public DrawingThread() {
+		thread = new Thread(this);
+	}
 
 	public void run() {
 		while (shouldRun) {
-			if(drawingObject != null) {
-                drawingObject.paint();
+			if (drawingObject != null) {
+				drawingObject.paint();
 				try {
-                    sleep();
+					sleep();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -33,19 +33,19 @@ public class DrawingThread implements Runnable{
 		}
 	}
 
-    private void sleep() throws InterruptedException {
-        Thread.sleep(1000 / getFps());
-    }
+	private void sleep() throws InterruptedException {
+		Thread.sleep(1000 / getFps());
+	}
 
-    public void start() {
-        shouldRun = true;
-        thread.start();
-    }
+	public void start() {
+		shouldRun = true;
+		thread.start();
+	}
 
-    public void stop() {
-        shouldRun = false;
-        thread.stop();
-    }
+	public void stop() {
+		shouldRun = false;
+		thread.stop();
+	}
 
 	public int getFps() {
 		return fps;

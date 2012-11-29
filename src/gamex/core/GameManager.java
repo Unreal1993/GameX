@@ -4,7 +4,7 @@ import gamex.helpers.DrawingThread;
 import gamex.primitives.DrawingObject;
 
 public class GameManager {
-	private int fps = 80 ;
+	private int fps = 80;
 	private DrawingObject drawingObject;
 	private DrawingThread drawingThread;
 
@@ -13,18 +13,18 @@ public class GameManager {
 		this.drawingObject = drawingObject;
 		initialize();
 	}
-	
+
 	public void initialize() {
 		try {
 			drawingThread = new DrawingThread();
 			drawingThread.setDrawingObject(drawingObject);
 			drawingThread.setFps(fps);
-            drawingThread.start();
-		}catch(Exception e) {
+			drawingThread.start();
+		} catch (Exception e) {
 			System.out.println("Failed to initialize the game manager");
 		}
-	}	
-	
+	}
+
 	public void stop() {
 		drawingThread.stop();
 	}

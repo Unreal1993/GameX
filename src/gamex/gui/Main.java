@@ -1,9 +1,9 @@
 /**
-  * Name    : Main.java
-  * Project : GameX
-  * Author  : Robert M Hubinsky <r.hubinsky@hotmail.com>
-  * Created : 28.11.2012
-  */
+ * Name    : Main.java
+ * Project : GameX
+ * Author  : Robert M Hubinsky <r.hubinsky@hotmail.com>
+ * Created : 28.11.2012
+ */
 package gamex.gui;
 
 import gamex.core.GameManager;
@@ -19,15 +19,15 @@ import javax.swing.border.EmptyBorder;
 
 public class Main extends JDialog {
 
-    private int squareSize = 500;
-    private static GameManager gameManager;
-    private static DrawingObject drawingObject = new DrawingObject();
+	private int squareSize = 500;
+	private static GameManager gameManager;
+	private static DrawingObject drawingObject = new DrawingObject();
 
-    /**
+	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-        Main dialog = new Main();
+		Main dialog = new Main();
 		try {
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
@@ -35,6 +35,7 @@ public class Main extends JDialog {
 			e.printStackTrace();
 		}
 		gameManager = new GameManager(drawingObject, 80);
+
 	}
 
 	/**
@@ -43,11 +44,12 @@ public class Main extends JDialog {
 	public Main() {
 		setBounds(100, 100, squareSize, squareSize);
 
-        // Put together an image to draw for the drawingObject
-        BufferedImage image = new BufferedImage(32, 32, BufferedImage.TYPE_INT_RGB);
-        image.getGraphics().drawRect(0, 0, 32, 32);
-        drawingObject.setDrawImage(image);
-        add(drawingObject);
-    }
+		// Put together an image to draw for the drawingObject
+		BufferedImage image = new BufferedImage(32, 32,
+				BufferedImage.TYPE_INT_RGB);
+		image.getGraphics().drawRect(0, 0, 32, 32);
+		drawingObject.setDrawImage(image);
+		add(drawingObject);
+	}
 
 }
