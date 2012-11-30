@@ -10,7 +10,12 @@ public class GameManager {
 	private Graphics graphics;
 	private DrawingThread drawingThread;
 	private Map map;
-
+	
+	public GameManager(Graphics graphics) {
+		this.graphics = graphics;
+		initialize();
+	}
+	
 	public GameManager(Graphics graphics, int fps) {
 		this.fps = fps;
 		this.graphics = graphics;

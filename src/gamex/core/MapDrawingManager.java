@@ -20,15 +20,8 @@ public class MapDrawingManager {
 		final int blocksInRow = 16;
 
 		MapBlock block;
-		int rowNumber, columnNumber;
 		for (int i = 0; i < map.getBlocks().size(); i++) {
 			block = map.getBlocks().get(i);
-
-			// Calculate the row and column in which the block will appear
-			rowNumber = (int) Math.floor(i / blocksInRow);
-			columnNumber = i % blocksInRow;
-
-			// Paint the block at the correct on-screen position
 			block.paint(graphics);
 		}
 	}
