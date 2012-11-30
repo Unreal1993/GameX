@@ -1,5 +1,7 @@
 package gamex.primitives;
 
+import gamex.gameobjects.MapBlock;
+
 import java.util.ArrayList;
 import java.util.List;
 

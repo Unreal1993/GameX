@@ -1,7 +1,7 @@
 package gamex.core;
 
+import gamex.gameobjects.MapBlock;
 import gamex.primitives.Map;
-import gamex.primitives.MapBlock;
 
 import java.awt.*;
 
@@ -29,7 +29,7 @@ public class MapDrawingManager {
 			columnNumber = i % blocksInRow;
 
 			// Paint the block at the correct on-screen position
-			block.paint(graphics, columnNumber * block.getWidth(), rowNumber * block.getHeight());
+			block.paint(graphics);
 		}
 	}
 
