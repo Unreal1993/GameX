@@ -1,7 +1,6 @@
 package gamex.core;
 
 import gamex.gameobjects.MapBlock;
-import gamex.helpers.Position;
 import gamex.primitives.Camera;
 import gamex.primitives.Map;
 
@@ -14,10 +13,10 @@ public class MapDrawingManager {
 
 	public MapDrawingManager(Graphics graphics) {
 		this.graphics = graphics;
-		camera = new Camera(new Position(0, 0));
+		camera = new Camera(new Point(0, 0));
 	}
 
-	public void setCameraCenterPosition(Position position) {
+	public void setCameraCenterPosition(Point position) {
 		camera.setCenterPosition(position);
 	}
 

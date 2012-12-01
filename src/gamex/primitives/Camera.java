@@ -1,24 +1,23 @@
 package gamex.primitives;
 
 import gamex.gameobjects.MapBlock;
-import gamex.helpers.Position;
 
 import java.awt.*;
 
 public class Camera {
 
-	Position centerPosition;
+	Point centerPosition;
 
-	public Camera(Position centerPosition) {
+	public Camera(Point centerPosition) {
 		this.centerPosition = centerPosition;
 	}
 
-	public void setCenterPosition(Position centerPosition) {
+	public void setCenterPosition(Point centerPosition) {
 		this.centerPosition = centerPosition;
 	}
 
 	public void move(int x, int y) {
-		centerPosition = new Position(centerPosition.getX() + x, centerPosition.getY() + y);
+		centerPosition = new Point((int) centerPosition.getX() + x, (int) centerPosition.getY() + y);
 	}
 
 	public void paint(Graphics g, Map map, MapBlock block) {
