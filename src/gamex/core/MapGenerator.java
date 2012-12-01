@@ -14,9 +14,9 @@ public class MapGenerator {
 			for(int j = 0;j<Math.round(500/20);j++) {
 				double random = Math.random();
 				if(random < 0.8) {
-					map.addBlock(new MapBlock(20,20,new Point(i*20,j*20),MapBlockType.Grass));
+					map.addBlock(new MapBlock(MapBlockType.Grass));
 				}else {
-					map.addBlock(new MapBlock(20,20,new Point(i*20,j*20),MapBlockType.Water));
+					map.addBlock(new MapBlock(MapBlockType.Water));
 				}
 			}	
 		}

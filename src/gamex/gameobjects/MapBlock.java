@@ -2,69 +2,29 @@ package gamex.gameobjects;
 
 import gamex.enums.MapBlockType;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
+import java.awt.image.BufferedImage;
 
-
-public class MapBlock{
-	private int height;
-	private int width;
-	private Point position;
+public class MapBlock {
 	public MapBlockType blockType;
-	public MapBlock(int width,int height,Point position,MapBlockType bType) {
-		this.position = position;
-		this.width = width;
-		this.height = height;
-		this.blockType = bType;
+	private BufferedImage image;
+	public MapBlock(MapBlockType blockType) {
+		this.blockType = blockType;
 	}
-	public void paint(Graphics g) {
-		Color previousColor = g.getColor();
-		g.setColor(blockType.getBlockColor());
-		g.fillRect(getX(), getY(), width, height);
-		g.setColor(previousColor);
+	public BufferedImage paint() {
+		if (image != null) {
+			return image;
+		}
+		image = getNewBufferedImage();
+		Graphics g = image.getGraphics();
+		g.setColor(blockType.getColor());
+		g.fillRect(0, 0, image.getWidth(), image.getHeight());
+		return image;
 	}
-	/**
-	 * @return int height
-	 */
-	public int getHeight() {
-		return height;
+	public int getDimension() {
+		return 20;
 	}
-	/**
-	 * @param height the height to set
-	 */
-	public void setHeight(int height) {
-		this.height = height;
-	}
-	/**
-	 * @return int width
-	 */
-	public int getWidth() {
-		return width;
-	}
-	/**
-	 * @param width the width to set
-	 */
-	public void setWidth(int width) {
-		this.width = width;
-	}
-	/**
-	 * @return Point position
-	 */
-	public Point getPosition() {
-		return position;
-	}
-	
-	public int getX() {
-		return position.x;
-	}
-	public int getY() {
-		return position.y;
-	}
-	/**
-	 * @param position the position to set
-	 */
-	public void setPosition(Point position) {
-		this.position = position;
+	private BufferedImage getNewBufferedImage() {
+		return new BufferedImage(getDimension(), getDimension(), BufferedImage.TYPE_INT_RGB);
 	}
 }

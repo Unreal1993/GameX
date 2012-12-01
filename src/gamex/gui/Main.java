@@ -10,16 +10,24 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import gamex.core.GameManager;
+import gamex.core.KeyboardHandler;
 import gamex.core.MapGenerator;
 import gamex.primitives.Map;
 
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Main extends JDialog  implements WindowListener{
+public class Main extends JDialog  implements WindowListener {
 
 	private final int squareSize = 500;
 	private static GameManager gameManager;
+
+	private static KeyboardHandler keyboardHandler;
+
+	public static boolean isKeyPressed(int keyCode) {
+		return keyboardHandler.isKeyPressed(keyCode);
+	}
+
 	public static void main(String[] args) {
 		Main dialog = new Main();
 		try {
@@ -37,6 +45,8 @@ public class Main extends JDialog  implements WindowListener{
 	}
 
 	public Main() {
+		keyboardHandler = new KeyboardHandler();
+		addKeyListener(keyboardHandler);
 		setBounds(100, 100, squareSize, squareSize);
 	}
 

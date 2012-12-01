@@ -7,16 +7,16 @@ public enum MapBlockType {
 	Grass(1,Color.GREEN),
 	Water(2,Color.BLUE);
 	
-	private int blockID;
-	private Color blockColor; // This can be used or we can load a texture here 
-	private MapBlockType(int blockID,Color blockColor) {
-		this.blockID = blockID;
-		this.blockColor = blockColor;
+	private int id;
+	private Color color; // This can be used or we can load a texture here
+	private MapBlockType(int id,Color color) {
+		this.id = id;
+		this.color = color;
 	}
-	public int getBlockID() {
-		return blockID;
+	public int getID() {
+		return id;
 	}
-	public Color getBlockColor() {
-		return blockColor;
+	public Color getColor() {
+		return color;
 	}
 }

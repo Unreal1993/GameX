@@ -8,6 +8,9 @@ package gamex.helpers;
 
 import gamex.core.GameManager;
 import gamex.core.MapDrawingManager;
+import gamex.gui.Main;
+
+import java.awt.event.KeyEvent;
 
 public class DrawingThread implements Runnable {
 
@@ -18,14 +21,32 @@ public class DrawingThread implements Runnable {
 
 	private Thread thread;
 
+	private int i = 0;
+
 	public DrawingThread(GameManager gameManager, MapDrawingManager drawingManager) {
 		thread = new Thread(this);
 		this.gameManager = gameManager;
 		this.mapDrawingManager = drawingManager;
 	}
 
+	public void handleInput() {
+		if (Main.isKeyPressed(KeyEvent.VK_UP)) {
+			mapDrawingManager.moveCamera(0, -1);
+		}
+		if (Main.isKeyPressed(KeyEvent.VK_DOWN)) {
+			mapDrawingManager.moveCamera(0, 1);
+		}
+		if (Main.isKeyPressed(KeyEvent.VK_LEFT)) {
+			mapDrawingManager.moveCamera(-1, 0);
+		}
+		if (Main.isKeyPressed(KeyEvent.VK_RIGHT)) {
+			mapDrawingManager.moveCamera(1, 0);
+		}
+	}
+
 	public void run() {
 		while (shouldRun) {
+			handleInput();
 			mapDrawingManager.draw(gameManager.getMap());
 			try {
 				sleep();
